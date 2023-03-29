@@ -1,0 +1,35 @@
+﻿@page
+@model MyCoreApp.Pages.Students.IndexModel
+@{
+}
+
+<br>
+<h2>List of Students</h2>
+<a class="btn btn-primary btn-sm" href="/Students/Create">New Students</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>EnrollmentDate</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(!Model.listStudents.Any()){<h3>List is empty! @Model.listStudents.Count</h3>}
+        @foreach(var item in Model.listStudents)
+        {
+            <tr>
+                <th>@item.id</th>
+                <th>@item.fname</th>
+                <th>@item.lname</th>
+                <th>@item.enrollmentDate</th>
+                <th>
+                    <a class="btn btn-primary btn-sm" href="/Students/Edit?id=@item.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Students/Delete?id=@item.id">Delete</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
